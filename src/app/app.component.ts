@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {PrimeNG} from "primeng/config";
+import {HeaderComponent} from "./header/header.component";
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
+  imports: [
+    HeaderComponent
+  ],
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'EPR-WarehouseManager-FE';
+export class AppComponent implements OnInit {
+  title = 'WarehouseManager';
+  constructor(private primeng: PrimeNG) {}
+  ngOnInit(): void {
+    this.primeng.ripple.set(true);
+  }
 }
