@@ -1,1 +1,42 @@
-<p>profile-menu works!</p>
+<a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" data-bs-toggle="dropdown">
+  <div class="status-indicator-container">
+    <div class="w-40px h-40px">
+      <img src="CBH.png" class="rounded-pill" style="object-fit: cover; height: 100%; width: 100%" alt="">
+    </div>
+    <span class="status-indicator bg-success"></span>
+  </div>
+</a>
+<div class=" dropdown-menu dropdown-menu-end p-0">
+  <a href="#" class="dropdown-item">
+    <div class="status-indicator-container">
+      <div class="w-48px h-48px">
+        <img src="CBH.png" class="rounded-pill" style="object-fit: cover; height: 100%; width: 100%" alt="">
+      </div>
+      <span class="status-indicator bg-success"></span>
+    </div>
+    <div class="d-none d-lg-inline-block mx-lg-2">
+      <h6 class="m-0" style="color: var(--gray-700)">Bảo Hân</h6>
+      <span style="color: var(--gray-500)">{{'baohan2604@gmail.com'}}</span>
+    </div>
+  </a>
+  <div class="dropdown-divider m-0"></div>
+  <a href="#" class="dropdown-item py-2 fw-medium d-flex justify-content-between align-content-center">
+    <div class="d-flex">
+      <i class="ph-bold ph-moon me-2 fw-medium" style="font-size: 20px;"></i>
+      Chế độ tối
+    </div>
+    <div class="form-check form-switch">
+      <input type="checkbox" class="form-check-input form-check-input-dark" style="width: 3em" id="sc_r_dark">
+    </div>
+  </a>
+  @for (menuItem of menuProfile; track $index){
+    @if (menuItem.typeMenu === 'dropdown'){
+      <a [href]="menuItem.linkMenu" class="dropdown-item py-2 fw-medium">
+        <i class="{{menuItem.iconMenu}} me-2 fw-medium" style="font-size: 20px;"></i>
+        {{menuItem.titleMenu}}
+      </a>
+    } @else if (menuItem.typeMenu === 'divider'){
+      <div class="dropdown-divider m-0"></div>
+    }
+  }
+</div>

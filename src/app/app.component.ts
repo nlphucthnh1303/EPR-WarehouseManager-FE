@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {PrimeNG} from "primeng/config";
 import {HeaderComponent} from "./header/header.component";
+import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
+import {DepartmentComponent} from "./page/department/department.component";
 
 
 @Component({
@@ -9,13 +11,16 @@ import {HeaderComponent} from "./header/header.component";
   standalone: true,
   templateUrl: './app.component.html',
   imports: [
-    HeaderComponent
+    HeaderComponent,
+    BreadcrumbComponent,
+    DepartmentComponent
   ],
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   title = 'WarehouseManager';
   constructor(private primeng: PrimeNG) {}
+
   ngOnInit(): void {
     this.primeng.ripple.set(true);
   }
