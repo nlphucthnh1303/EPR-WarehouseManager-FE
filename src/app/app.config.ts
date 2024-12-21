@@ -5,6 +5,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { providePrimeNG } from 'primeng/config';
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import Aura from '@primeng/themes/aura';
+import {definePreset} from "@primeng/themes";
 
 
 export const appConfig: ApplicationConfig = {
@@ -14,7 +15,23 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: definePreset(Aura, {
+          semantic: {
+            primary: {
+              50: '{slate.50}',
+              100: '{slate.100}',
+              200: '{slate.200}',
+              300: '{slate.300}',
+              400: '{slate.400}',
+              500: '{slate.500}',
+              600: '{slate.600}',
+              700: '{slate.700}',
+              800: '{slate.800}',
+              900: '{slate.900}',
+              950: '{slate.950}'
+            }
+          }
+        })
       }
     })
   ]
