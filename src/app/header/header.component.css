@@ -1,0 +1,21 @@
+.nav-item:hover {
+  background-color: var(--gray-200);
+}
+
+.nav-link {
+  font-weight: 600;
+}
+
+.notification {
+  padding: 10px;
+  transition: 0.5s;
+}
+.notification:hover {
+  background-color: var(--gray-200);
+
+}
+
+.avatar:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+

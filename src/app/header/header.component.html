@@ -1,0 +1,50 @@
+<div class="header-navigation mx-4 my-1 d-flex justify-content-between align-content-center">
+  <div class="header-navigation-left-content  d-flex flex-column justify-content-center align-content-center">
+    <div class="menu-group">
+      <ul class="nav">
+        @for(menuTab of menuHeaders; track $index){
+          <li class="nav-item rounded-2 dropdown">
+            <a class="nav-link" href="#" data-bs-toggle="dropdown">{{menuTab.titleMenu}}</a>
+            <div class="dropdown-menu dropdown-menu-end p-0">
+              @for (menuItem of menuTab.childMenu; track $index){
+                @if (menuItem.typeMenu === 'dropdown'){
+                  <a [href]="menuItem.linkMenu" class="dropdown-item py-2 fw-medium">
+                    <!--<i class="ph-shopping-cart me-2"></i>-->
+                    {{menuItem.titleMenu}}
+                  </a>
+                } @else if (menuItem.typeMenu === 'divider'){
+                  <div class="dropdown-divider m-0"></div>
+                }
+              }
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+
+  </div>
+  <div class="header-navigation-right-content d-flex justify-content-between align-content-center">
+    <div class="search-group me-2 d-flex flex-column justify-content-center align-content-center">
+      <div class="form-control-feedback form-control-feedback-start">
+        <input type="text" class="form-control rounded-2 border-2 shadow" placeholder="Tìm kiếm">
+        <div class="form-control-feedback-icon form-control-feedback-icon-lg">
+          <i class="bi bi-search"></i>
+        </div>
+      </div>
+    </div>
+    <div class="notification-avatar-group me-3">
+      <ul class="nav flex-row justify-content-end align-content-center">
+        <li class="m-1 nav-item nav-item-dropdown-lg dropdown d-flex flex-column justify-content-center notification rounded-2">
+          <app-notification/>
+        </li>
+        <li class="m-1 nav-item nav-item-dropdown-lg dropdown avatar">
+          <app-profile-menu/>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<hr style="border-top: var(--border-width) solid var(--gray-400)" class="m-0">
+
+

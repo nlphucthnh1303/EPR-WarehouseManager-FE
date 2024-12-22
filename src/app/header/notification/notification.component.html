@@ -1,0 +1,38 @@
+
+<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  style="color: var(--gray-700)" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"></path>
+  </svg>
+  <span class="badge bg-danger text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill">1</span>
+</a>
+<div class="dropdown-menu wmin-lg-500 mt-3 p-0">
+  <div class="d-flex border-bottom align-items-center p-3">
+    <h6 class="mb-0">Thông báo <span class="me-3 badge bg-success rounded-4 bg-opacity-10 text-success">Mới</span></h6>
+    <div class="ms-auto">
+      <a class="text-body rounded-pill">
+        <i class="ph-x"></i>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="dropdown-menu-scrollable">
+    @for (notification of notifications; track $index){
+      <a href="#" class="dropdown-item align-items-start text-wrap py-2">
+        <div class="status-indicator-container me-3">
+          <img [src]="notification.userAvatar" class="w-40px h-40px rounded-pill" alt="">
+          <span class="status-indicator" [ngClass]="!notification.state ? 'bg-success': 'bg-light'"></span>
+        </div>
+
+        <div class="flex-1">
+          <span class="fw-semibold">{{notification.title}}</span>
+          <span class="text-muted float-end fs-sm">{{notification.time}}</span>
+          <div class="text-muted">{{notification.content}}</div>
+        </div>
+      </a>
+    }
+  </div>
+
+  <div class="d-flex py-2 px-3">
+  </div>
+</div>

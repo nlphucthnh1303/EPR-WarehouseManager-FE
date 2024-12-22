@@ -1,0 +1,75 @@
+<div class="mx-4">
+  <div class="header-page d-flex justify-content-between">
+    <div class="header-page-search">
+      <div class="form-control-feedback form-control-feedback-start">
+        <input type="text" class="form-control rounded-2 border-2 shadow" placeholder="Tìm kiếm">
+        <div class="form-control-feedback-icon form-control-feedback-icon-lg">
+          <i class="bi bi-search"></i>
+        </div>
+      </div>
+    </div>
+    <div class="header-page-buttons">
+      <button type="button" class="btn btn-outline-primary rounded-3 fw-medium border-3 me-2">
+        <i class="ph-bold ph-download-simple me-2"></i>
+        Xuất excel
+      </button>
+      <button type="button" class="btn btn-primary rounded-3">
+        <i class="ph-bold ph-plus me-2"></i>
+        Thêm mới
+      </button>
+    </div>
+  </div>
+  <div class="card my-3">
+    <div class="card-header d-flex justify-content-between">
+      <div class="card-header-right">
+        <h5 class="m-0">Danh sách bộ phận</h5>
+      </div>
+      <div class="card-header-left">
+        <a href="#" data-bs-toggle="dropdown">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#000000" viewBox="0 0 256 256">
+            <path
+              d="M112,60a16,16,0,1,1,16,16A16,16,0,0,1,112,60Zm16,52a16,16,0,1,0,16,16A16,16,0,0,0,128,112Zm0,68a16,16,0,1,0,16,16A16,16,0,0,0,128,180Z"></path>
+          </svg>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item">Action</a>
+          <a href="#" class="dropdown-item">Another action</a>
+          <a href="#" class="dropdown-item">Something else here</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body p-0 m-0">
+      <p-table [columns]="cols"
+         [value]="departmentList" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header let-columns>
+          <tr>
+            <th *ngFor="let col of columns" class="text-center">
+              {{ col.header }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-department>
+          <tr>
+            <td class="text-center">{{ department.Index }}</td>
+            <td class="text-nowrap">{{ department.DepartmentCode }}</td>
+            <td class="text-nowrap">{{ department.DepartmentName }}</td>
+            <td class="text-nowrap">{{ department.Description }}</td>
+            <td class="text-nowrap">{{ department.StaffCreateName }}</td>
+            <td class="text-center">{{ department.CreateDate | date: 'dd/MM/YYYY' }}</td>
+            <td class="text-center">{{ department.StatusName }}</td>
+            <td>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="card-footer d-flex justify-content-between align-content-center">
+      <div class="card-footer-right d-flex align-items-center">
+        <p class="m-0">Trang {{paging?.pagecurrent}} của {{paging?.TotalPage}}</p>
+      </div>
+      <div class="card-footer-left">
+          <p-paginator (onPageChange)="onPageChange($event)" [first]="1" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
+      </div>
+  </div>
+</div>
+
