@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Notification} from "../../model/notification.model";
+import {Notification} from "../../../model/notification.model";
 import {NgClass} from "@angular/common";
 
 @Component({

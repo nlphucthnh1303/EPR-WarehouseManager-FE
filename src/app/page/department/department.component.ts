@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import {PaginatorModule, PaginatorState} from 'primeng/paginator';
-import {Department_GetAllRes} from "../../model/department.model";
-import {ColTable} from "../../model/config.model";
+import {Department_GetAllRes} from "../../../model/department.model";
+import {ColTable} from "../../../model/config.model";
   @Component({
   selector: 'app-department',
   standalone: true,
@@ -162,10 +162,6 @@ export class DepartmentComponent implements OnInit{
   onPageChange(event: PaginatorState) {
     this.first = event.first;
     this.rows = event.rows;
-    this.paging = {
-      pagecurrent: event.page || 0,
-      TotalPage: event.pageCount || 0
-    };
   }
 
 }

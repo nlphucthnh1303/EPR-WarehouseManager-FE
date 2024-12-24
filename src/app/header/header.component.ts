@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuTab, MenuItem} from "../model/menu.model";
+import {MenuTab, MenuItem} from "../../model/menu.model";
 import {ProfileMenuComponent} from "./profile-menu/profile-menu.component";
 import {NotificationComponent} from "./notification/notification.component";
 

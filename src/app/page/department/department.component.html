@@ -40,24 +40,44 @@
     </div>
     <div class="card-body p-0 m-0">
       <p-table [columns]="cols"
-         [value]="departmentList" [tableStyle]="{ 'min-width': '50rem' }">
+         [value]="departmentList"
+         [resizableColumns]="true"
+         styleClass="p-datatable-gridlines"
+         [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header let-columns>
           <tr>
-            <th *ngFor="let col of columns" class="text-center">
+            <th *ngFor="let col of columns" class="text-center" style="background-color: var(--gray-50)">
               {{ col.header }}
             </th>
           </tr>
         </ng-template>
         <ng-template #body let-department>
           <tr>
-            <td class="text-center">{{ department.Index }}</td>
-            <td class="text-nowrap">{{ department.DepartmentCode }}</td>
-            <td class="text-nowrap">{{ department.DepartmentName }}</td>
-            <td class="text-nowrap">{{ department.Description }}</td>
-            <td class="text-nowrap">{{ department.StaffCreateName }}</td>
-            <td class="text-center">{{ department.CreateDate | date: 'dd/MM/YYYY' }}</td>
-            <td class="text-center">{{ department.StatusName }}</td>
-            <td>
+            <td class="text-center boder-right">{{ department.Index }}</td>
+            <td class="text-nowrap boder-right">{{ department.DepartmentCode }}</td>
+            <td class="text-nowrap boder-right">{{ department.DepartmentName }}</td>
+            <td class="text-nowrap boder-right">{{ department.Description }}</td>
+            <td class="text-nowrap boder-right">{{ department.StaffCreateName }}</td>
+            <td class="text-center boder-right">{{ department.CreateDate | date: 'dd/MM/YYYY' }}</td>
+            <td class="text-center boder-right">
+              <span class="badge rounded-3 bg-success bg-opacity-10 text-success" *ngIf="department.StatusID === 1">
+                {{ department.StatusName }}
+              </span>
+              <span class="badge rounded-3 bg-light text-dark" *ngIf="department.StatusID === 2">
+                {{ department.StatusName }}
+              </span>
+            </td>
+            <td class="text-center text-nowrap">
+              <a href="" class="me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#667085" viewBox="0 0 256 256">
+                  <path d="M229.66,58.34l-32-32a8,8,0,0,0-11.32,0l-96,96A8,8,0,0,0,88,128v32a8,8,0,0,0,8,8h32a8,8,0,0,0,5.66-2.34l96-96A8,8,0,0,0,229.66,58.34ZM124.69,152H104V131.31l64-64L188.69,88ZM200,76.69,179.31,56,192,43.31,212.69,64ZM224,128v80a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h80a8,8,0,0,1,0,16H48V208H208V128a8,8,0,0,1,16,0Z"></path>
+                </svg>
+              </a>
+              <a href="" class="ms-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#667085" viewBox="0 0 256 256">
+                  <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
+                </svg>
+              </a>
             </td>
           </tr>
         </ng-template>
@@ -65,7 +85,7 @@
     </div>
     <div class="card-footer d-flex justify-content-between align-content-center">
       <div class="card-footer-right d-flex align-items-center">
-        <p class="m-0">Trang {{paging?.pagecurrent}} của {{paging?.TotalPage}}</p>
+        <p class="m-0">Trang 1 của 10</p>
       </div>
       <div class="card-footer-left">
           <p-paginator (onPageChange)="onPageChange($event)" [first]="1" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />

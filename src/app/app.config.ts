@@ -6,10 +6,12 @@ import { providePrimeNG } from 'primeng/config';
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import Aura from '@primeng/themes/aura';
 import {definePreset} from "@primeng/themes";
+import {provideHttpClient} from "@angular/common/http";
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes), provideClientHydration(),
     provideAnimationsAsync(),
@@ -31,7 +33,10 @@ export const appConfig: ApplicationConfig = {
               950: '{slate.950}'
             }
           }
-        })
+        }),
+        options: {
+          darkModeSelector: false
+        }
       }
     })
   ]
