@@ -4,6 +4,7 @@ import {PrimeNG} from "primeng/config";
 import {HeaderComponent} from "./header/header.component";
 import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
 import {DepartmentComponent} from "./page/department/department.component";
+import {ModalComponent} from "./component/modal/modal.component";
 
 
 @Component({
@@ -13,7 +14,8 @@ import {DepartmentComponent} from "./page/department/department.component";
   imports: [
     HeaderComponent,
     BreadcrumbComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    ModalComponent
   ],
   styleUrl: './app.component.css'
 })
@@ -23,5 +25,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.primeng.ripple.set(true);
+  }
+
+  openModal() {
+
   }
 }

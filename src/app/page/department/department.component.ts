@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DestroyRef, inject, Inject, OnInit} from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import {PaginatorModule, PaginatorState} from 'primeng/paginator';
 import {Department_GetAllRes} from "../../../model/department.model";
 import {ColTable} from "../../../model/config.model";
+import {DepartmentService} from "./department.service";
+import {ApiService} from "../../../services/api.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
   @Component({
   selector: 'app-department',
   standalone: true,
@@ -17,6 +20,8 @@ export class DepartmentComponent implements OnInit{
   public paging!: {pagecurrent: number, TotalPage: number};
   public  first: number | undefined = 0;
   public  rows: number | undefined = 10;
+  public departmentService = inject(DepartmentService);
+
   ngOnInit(): void {
     this.departmentList = [
           {
@@ -145,6 +150,18 @@ export class DepartmentComponent implements OnInit{
             ...department
           }
     })
+    this.departmentService.getAll().subscribe({
+      next: (res: Department_GetAllRes[]) => {
+        console.log('This is data',res);
+      },
+      error: (err: Error) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
+      }
+    })
+
     this.cols = [
       {field: 'Index', header: 'STT'},
       {field: 'DepartmentCode', header: 'Mã bộ phận'},
@@ -163,5 +180,8 @@ export class DepartmentComponent implements OnInit{
     this.first = event.first;
     this.rows = event.rows;
   }
+
+
+
 
 }
