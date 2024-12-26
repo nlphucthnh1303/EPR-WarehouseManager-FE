@@ -92,4 +92,26 @@
       </div>
   </div>
 </div>
+</div>
+<app-modal [isCloseOnModal]="true" [idModal]="'testModal'" [titleModal]="'This is modal test'">
+  <form class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Mã bộ phận</label>
+      <input type="text" class="form-control" placeholder="Eugene Kopyov">
+    </div>
 
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Tên bộ phận </label>
+      <input type="password" class="form-control" placeholder="Your strong password">
+    </div>
+
+    <div class="col-12 mb-3">
+      <label class="form-label">Mô tả</label>
+      <p-editor [style]="{ height: '170px' }" />
+    </div>
+  </form>
+  <div class="footer">
+    <button type="reset" class="btn btn-outline-primary rounded-3" >Đóng</button>
+    <button type="submit" class="btn btn-primary ms-3 rounded-3">Lưu thay đổi</button>
+  </div>
+</app-modal>

@@ -5,12 +5,11 @@ import {PaginatorModule, PaginatorState} from 'primeng/paginator';
 import {Department_GetAllRes} from "../../../model/department.model";
 import {ColTable} from "../../../model/config.model";
 import {DepartmentService} from "./department.service";
-import {ApiService} from "../../../services/api.service";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ModalComponent} from "../../component/modal/modal.component";
+import { Editor } from 'primeng/editor';
   @Component({
   selector: 'app-department',
-  standalone: true,
-  imports: [TableModule,CommonModule, PaginatorModule],
+  standalone: true, imports: [TableModule, CommonModule, PaginatorModule, ModalComponent, Editor],
   templateUrl: './department.component.html',
   styleUrl: './department.component.css'
 })
@@ -21,7 +20,7 @@ export class DepartmentComponent implements OnInit{
   public  first: number | undefined = 0;
   public  rows: number | undefined = 10;
   public departmentService = inject(DepartmentService);
-
+  text: string | undefined;
   ngOnInit(): void {
     this.departmentList = [
           {
@@ -150,6 +149,7 @@ export class DepartmentComponent implements OnInit{
             ...department
           }
     })
+    this.departmentService.getAll()
     this.departmentService.getAll().subscribe({
       next: (res: Department_GetAllRes[]) => {
         console.log('This is data',res);
